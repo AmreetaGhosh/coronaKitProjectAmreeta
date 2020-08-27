@@ -108,12 +108,18 @@ public class UserController extends HttpServlet {
 		return "valuemissing.jsp";
 	}
 
-	private String showOrderSummary(HttpServletRequest request, HttpServletResponse response) {
+	private String showOrderSummary(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, ServletException {
 		HttpSession session = request.getSession();
 		  CoronaKit VisitorBillingDetails = new
 		  CoronaKit(request.getParameter("visitorName"),request.getParameter(
 		  "visitorEmailid"),request.getParameter("visitorContactNumber"),(double) session.getAttribute("billingAmount"),request.getParameter(
 		  "visitorDeliveryAddress"),(String)session.getAttribute("billingDate")); 
+		  
+		  boolean OrderStoredtoDb=this.kitDAO.saveVisitorDetails(VisitorBillingDetails,(List<KitDetail>)request.getSession().getAttribute("ShoppingCart") );
+			
+			if(!OrderStoredtoDb)
+				throw new ServletException("Order Details are not saved");
+			
 		 OrderSummary ordersummary = new OrderSummary(VisitorBillingDetails, (List<KitDetail>)request.getSession().getAttribute("ShoppingCart"));
 		 request.setAttribute("OrderSummary", ordersummary);
 		return "ordersummary.jsp";

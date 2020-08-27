@@ -17,6 +17,7 @@
 
 
 <% 
+response.setHeader("Cache-Control", "no-cache, no-store");
 	List<KitDetail> kits = (List<KitDetail>)session.getAttribute("ShoppingCart");
 	UserMaster visitor = (UserMaster)session.getAttribute("visitorDetails");
 	double totalBillAmount=0;

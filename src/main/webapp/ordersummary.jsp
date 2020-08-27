@@ -16,6 +16,7 @@
 <h1>Billing Successful</h1>
 <h1>Corona Kit- Your Order Summary after Billing</h1>
 <%
+response.setHeader("Cache-Control", "no-cache, no-store");
 OrderSummary ordersummary = (OrderSummary)request.getAttribute("OrderSummary");
 double totalBillAmount=0;
 

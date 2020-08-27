@@ -17,6 +17,7 @@
 <h1>Corona Kit- Your Billing Details</h1>
 <form action="user?action=ordersummary" method="post">
 <%
+response.setHeader("Cache-Control", "no-cache, no-store");
 List<KitDetail> kits = (List<KitDetail>)session.getAttribute("ShoppingCart");
 UserMaster visitor = (UserMaster)session.getAttribute("visitorDetails");
 

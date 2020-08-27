@@ -1,0 +1,2 @@
+CREATE TABLE `coronakitdb`.`visitorordersummary` ( `id` INT NOT NULL AUTO_INCREMENT , `Kitid` INT NOT NULL , `VisitorName` VARCHAR(50) NOT NULL , `VistorEmail` VARCHAR(50) NOT NULL , `VisitorPhone` VARCHAR NOT NULL , `pId` INT NOT NULL , `ProductId` INT NOT NULL , `ProductName` VARCHAR(500) NOT NULL , `ProductQuantity` INT NOT NULL , `ProductAmount` FLOAT NOT NULL , `VisitorDeliverAddress` VARCHAR(500) NOT NULL , `BillingDate` VARCHAR(50) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+

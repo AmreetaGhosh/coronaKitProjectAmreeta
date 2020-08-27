@@ -14,10 +14,7 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<hr/>
-	<p align="right">
-	<a href="user?action=showkit"><button>View Shopping Cart</button></a>
-	</p>
+
 	
 	
 
@@ -45,6 +42,28 @@
 			<% } %>
 		</tbody>
 	</table>
+	
+	<%
+if(session.getAttribute("ShoppingCart")!=null)
+{
+	List<KitDetail>  existingKits=(List<KitDetail>)session.getAttribute("ShoppingCart");
+	int totalIteminCart=0;
+	 for(int k=0;k<existingKits.size();k++)
+	  {
+		 totalIteminCart+=existingKits.get(k).getQuantity();
+	  }
+%>	
+</br>
+	<div>
+	<a href="user?action=saveorder">Show Cart</a><b>(<%= totalIteminCart%>)</b>
+  </div>
+</br> 
+ 
+  <div>
+	<a href="user?action=placeorder"><button>Save order</button></b>
+  </div>
+ 
+<% } %>
 
 <hr/>	
 	<jsp:include page="footer.jsp"/>

@@ -14,9 +14,10 @@
 <jsp:include page="header.jsp"/>
 <hr/>
 
-<h1>Corona Kit- Your Order Summary 456777</h1>
+<h1>Corona Kit- Your Order Summary</h1>
 <form action="user?action=placeorder" method="post">
 <%
+response.setHeader("Cache-Control", "no-cache, no-store");
 List<KitDetail> kits = (List<KitDetail>)session.getAttribute("ShoppingCart");
 UserMaster visitor = (UserMaster)session.getAttribute("visitorDetails");
 double totalBillAmount=0;
@@ -50,8 +51,12 @@ double totalBillAmount=0;
 	<br/>
 	
 <div align = "center">
-<a href="admin?action=placeorder"><button>Add Address and Place Order</button></a></div>
+<a href="user?action=placeorder"><button>Add Address and Place Order</button></a></div>
 </form>	
+
+<div align = "left">
+<a href="user?action=showproducts"><button>Continue Shopping</button></a></div>
+</form>
 	
 <hr/>	
 	<jsp:include page="footer.jsp"/>
